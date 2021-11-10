@@ -1,4 +1,4 @@
-import { API } from "utils/API"
+import { API } from "../utils/API"
 
 export const getProducts = () => API.get('/')
 export const addProduct = () => API.get('/')

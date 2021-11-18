@@ -1,0 +1,72 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Coat",
+      "cost": 70,
+      "department": [
+        {
+          "name": "Clothing",
+          "identification": "Cotton Cloth"
+        }
+      ],
+      "category": [
+        {
+          "name": "Winter Clothing",
+          "id": 1
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Scarf",
+      "cost": 25,
+      "department": [
+        {
+          "name": "Clothing",
+          "identification": "Cotton Cloth"
+        }
+      ],
+      "category": [
+        {
+          "name": "Winter Clothing",
+          "id": 1
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Earmuffs",
+      "cost": 10,
+      "department": [
+        {
+          "name": "Clothing",
+          "identification": "Cotton Cloth"
+        }
+      ],
+      "category": [
+        {
+          "name": "Winter Clothing",
+          "id": 1
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "sweater",
+      "cost": 35.99,
+      "department": [
+        {
+          "name": "Clothing",
+          "identification": "Cotton Cloth"
+        }
+      ],
+      "category": [
+        {
+          "name": "Winter Clothing",
+          "id": 1
+        }
+      ]
+    }
+  ]
+}

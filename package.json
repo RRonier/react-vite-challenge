@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
+    "server": "json-server --watch db.json --port 5000",
     "build": "vite build",
     "serve": "vite preview"
   },

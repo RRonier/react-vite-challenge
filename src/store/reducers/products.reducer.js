@@ -1,38 +1,49 @@
-import * as actionTypes from '../actions/actionTypes'
-
-import { updateObject } from '../../utils/utility'
+import { types } from "../actions/actionTypes";
 
 const initialState = {
-    products: [],
-    error: null,
-    loading: false
+    data: null,
+    selected: null,
+    deleted: '',
+    created: null,
+    modified: null,
+    error: ''
 }
 
-const getProductsStart = (state, action) => {
-    return updateObject(state, { loading: true })
-}
-
-const getProductsSuccess = (state, action) => {
-    return updateObject(state, {
-        products: action.products,
-        error: null,
-        loading: false
-    })
-}
-
-const getProductsFail = (state, action) => {
-    return updateObject(state, {
-        error: action.error,
-        loading: true
-    })
-}
-
-export const productsReducer = (state = initialState, action) => {
+export const axiosDataReducer = (state = initialState, action) => {
     switch (action.type) {
-        case actionTypes.GET_PRODUCTS_START: return getProductsStart(state, action)
-        case actionTypes.GET_PRODUCTS_SUCCESS: return getProductsSuccess(state, action)
-        case actionTypes.GET_PRODUCTS_FAIL: return getProductsFail(state, action)
+        case types.get:
+            return {
+                ...state,
+                data: action.data
+            }
+        case types.selected:
+            return {
+                ...state,
+                selected: action.selectedItem
+            }
+        case types.delete:
+            return {
+                ...state,
+                data: state.data.filter(item => item.id !== action.deletedItem.id),
+                deleted: action.deletedItem
+            }
+        case types.created:
+            return {
+                ...state,
+                created: action.createdItem
+            }
+        case types.modified:
+            return {
+                ...state,
+                modified: action.modifiedItem
+            }
+
+        case types.error:
+            return {
+                ...state,
+                error: action.msg
+            }
         default:
-            return state
+            return state;
     }
 }

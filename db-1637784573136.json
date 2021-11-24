@@ -1,0 +1,89 @@
+{
+  "products": [
+    {
+      "id": 21,
+      "name": "sdfsdf",
+      "cost": 444,
+      "department": [
+        {
+          "name": "44",
+          "identification": "44"
+        }
+      ],
+      "category": [
+        {
+          "name": "44",
+          "id": 44
+        }
+      ]
+    },
+    {
+      "id": 564,
+      "name": "asdad",
+      "cost": 54,
+      "department": [
+        {
+          "name": "sdsfd",
+          "identification": "5454"
+        }
+      ],
+      "category": [
+        {
+          "name": "sfsfd",
+          "id": 5454
+        }
+      ]
+    },
+    {
+      "id": 5454,
+      "name": "5454",
+      "cost": 5454,
+      "department": [
+        {
+          "name": "5454",
+          "identification": "5454"
+        }
+      ],
+      "category": [
+        {
+          "name": "5454",
+          "id": 5454
+        }
+      ]
+    },
+    {
+      "id": 465456,
+      "name": "5454",
+      "cost": 5454,
+      "department": [
+        {
+          "name": "5454",
+          "identification": "5454"
+        }
+      ],
+      "category": [
+        {
+          "name": "5454",
+          "id": 5454
+        }
+      ]
+    },
+    {
+      "id": 66215615,
+      "name": "651651",
+      "cost": 651561,
+      "department": [
+        {
+          "name": "651651",
+          "identification": "65165"
+        }
+      ],
+      "category": [
+        {
+          "name": "1651",
+          "id": 651651651
+        }
+      ]
+    }
+  ]
+}

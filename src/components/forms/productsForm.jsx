@@ -1,10 +1,27 @@
-import * as React from 'react'
+import { useEffect } from 'react'
 import {
     TextField,
 } from "@mui/material"
 import CustomButton from '../shared/CustomButton/CustomButton'
 
-const AddProductForm = ({ type, onSubmit }) => {
+const ProductForm = ({
+    type,
+    onSubmit,
+    id,
+    name,
+    cost,
+    department,
+    departmentId,
+    category,
+    categoryId,
+    onChange,
+    reset
+}) => {
+
+    useEffect(() => {
+        reset()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [id, name, cost, department, departmentId, category, categoryId])
     return (
         <form
             onSubmit={onSubmit}
@@ -15,44 +32,57 @@ const AddProductForm = ({ type, onSubmit }) => {
             }}
         >
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', rowGap: '15px', columnGap: '15px', width: '35%' }}>
-                {type === "add" &&
+                {id &&
                     <TextField
                         required
-                        id="product-id"
+                        name="id"
                         label="Id"
                         type="number"
+                        onChange={onChange}
+                        value={id}
                     />}
                 <TextField
-                    id="product-name"
+                    name="name"
                     label="Name"
                     type="text"
+                    onChange={onChange}
+                    value={name}
                 />
                 <TextField
-                    id="product-cost"
+                    name="  "
                     label="Cost"
                     type="number"
+                    onChange={onChange}
+                    value={cost}
                 />
                 <TextField
-                    id="product-department"
+                    name="department"
                     label="Department"
                     type="text"
+                    onChange={onChange}
+                    value={department}
                 />
                 <TextField
-                    id="department-id"
+                    name="departmentId"
                     label="Department ID"
                     type="number"
+                    onChange={onChange}
+                    value={departmentId}
                 />
                 <TextField
-                    id="product-category"
+                    name="category"
                     label="Category"
                     type="text"
+                    onChange={onChange}
+                    value={category}
                 />
                 <div style={{ display: 'grid' }}>
                     <TextField
-                        id="category-id"
+                        name="categoryId"
                         label="Category ID"
                         type="number"
-                        fullWidth
+                        onChange={onChange}
+                        value={categoryId}
                     />
                 </div>
             </div>
@@ -61,4 +91,4 @@ const AddProductForm = ({ type, onSubmit }) => {
     )
 }
 
-export default AddProductForm
+export default ProductForm

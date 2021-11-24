@@ -92,30 +92,30 @@ export const getItemDeleteGetItems = (id) => {
 //modify item
 export const modifyItem = async (
     id,
-    formName,
-    formCost,
-    formDepartment,
-    formDepartmentId,
-    formCategory,
-    formCategoryId,
+    name,
+    cost,
+    department,
+    departmentId,
+    category,
+    categoryId,
     dispatch,
     history
 ) => {
     try {
         await axios.put(`http://localhost:5000/products/${id}`, {
             "id": +id,
-            "name": formName,
-            "cost": +formCost,
+            "name": name,
+            "cost": +cost,
             "department": [
                 {
-                    "name": formDepartment,
-                    "identification": formDepartmentId
+                    "name": department,
+                    "identification": departmentId
                 }
             ],
             "category": [
                 {
-                    "name": formCategory,
-                    "id": +formCategoryId
+                    "name": category,
+                    "id": +categoryId
                 }
             ]
         })
@@ -156,62 +156,34 @@ export const modifyItem = async (
 
 //create item
 export const createNewItem = async (id, name, cost, department, departmentId, category, categoryId, dispatch, history) => {
-    if (!isNaN(id) && id !== '') {
-        try {
-            await axios.post("http://localhost:5000/products", {
-                "id": +id,
-                "name": name,
-                "cost": +cost,
-                "department": [
-                    {
-                        "name": department,
-                        "identification": departmentId
-                    }
-                ],
-                "category": [
-                    {
-                        "name": category,
-                        "id": +categoryId
-                    }
-                ]
-            })
-            const selected = await axios.get(`http://localhost:5000/products/${id}`)
-            const { data } = selected
-
+    axios.post("http://localhost:5000/products", {
+        "id": +id,
+        "name": name,
+        "cost": +cost,
+        "department": [
+            {
+                "name": department,
+                "identification": departmentId
+            }
+        ],
+        "category": [
+            {
+                "name": category,
+                "id": +categoryId
+            }
+        ]
+    }).then(({ data }) => {
+        dispatch({
+            type: types.created,
+            createdItem: data
+        });
+        history('/')
+    },
+        () => {
             dispatch({
-                type: types.created,
-                createdItem: data
-            });
-
-            // Swal.fire({
-            //     icon: 'success',
-            //     title: 'Your new item has been created',
-            //     showConfirmButton: false,
-            //     timer: 1500
-            // })
-
-            history('/')
-
-        } catch (error) {
-            // Swal.fire({
-            //     icon: 'error',
-            //     title: 'Oops...',
-            //     text: 'Something went wrong!',
-            //     footer: 'Please enter a unique ID'
-            // })
-            return dispatch({
                 type: types.error,
                 msg: 'Unable to create new item'
-
             })
-        }
-    } else {
-        // Swal.fire({
-        //     icon: 'error',
-        //     title: 'Oops...',
-        //     text: 'Something went wrong!',
-        //     footer: 'Please enter valid ID'
-        // })
-    }
+        })
 
-};
+}

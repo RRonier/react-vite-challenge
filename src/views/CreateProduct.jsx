@@ -1,12 +1,11 @@
 import React from 'react'
 import NavBar from '../components/shared/NavBar/NavBar'
-import ProductsForm from "../components/forms/productsForm"
 import { useDispatch } from 'react-redux'
 import { createNewItem } from "../store/actions/products.actions"
 import { useForm } from '../hooks/useForm'
-import { TextField } from '@mui/material'
-import CustomButton from '../components/shared/CustomButton/CustomButton'
 import { useNavigate } from 'react-router-dom'
+import { TextField } from "@mui/material"
+import CustomButton from '../components/shared/CustomButton/CustomButton'
 
 const CreateProductView = () => {
     const dispatch = useDispatch()
@@ -15,11 +14,11 @@ const CreateProductView = () => {
     const [formValues, onChange] = useForm({
         id: '',
         name: '',
-        cost: '',
+        cost: 0,
         department: '',
-        departmentId: '',
+        departmentId: 0,
         category: '',
-        categoryId: ''
+        categoryId: 0
     })
 
     const {
@@ -32,7 +31,7 @@ const CreateProductView = () => {
         categoryId
     } = formValues
 
-    const onSubmit = (e) => {
+    const submit = (e) => {
         e.preventDefault()
         createNewItem(
             id,
@@ -49,9 +48,9 @@ const CreateProductView = () => {
     return (
         <div style={{ marginTop: '90px' }}>
             <NavBar title="Add Product" />
-            {/* <ProductsForm type="add" onSubmit={onSubmit} /> */}
+
             <form
-                onSubmit={onSubmit}
+                onSubmit={submit}
                 style={{
                     display: 'flex',
                     flexDirection: 'column',
@@ -61,8 +60,8 @@ const CreateProductView = () => {
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', rowGap: '15px', columnGap: '15px', width: '35%' }}>
                     <TextField
                         name="id"
-                        label="id"
-                        type="text"
+                        label="Id"
+                        type="number"
                         onChange={onChange}
                         value={id}
                     />
@@ -101,14 +100,15 @@ const CreateProductView = () => {
                         onChange={onChange}
                         value={category}
                     />
-                    <TextField
-                        name="categoryId"
-                        label="Category ID"
-                        type="number"
-                        onChange={onChange}
-                        value={categoryId}
-
-                    />
+                    <div style={{ display: 'grid' }}>
+                        <TextField
+                            name="categoryId"
+                            label="Category ID"
+                            type="number"
+                            onChange={onChange}
+                            value={categoryId}
+                        />
+                    </div>
                 </div>
                 <CustomButton type="add" />
             </form>

@@ -1,24 +1,25 @@
 import axios from "axios";
 import { types } from '../actions/actionTypes'
+import {
+    getProductsAction,
+    selectProductAction,
+    deleteProductAction,
+    ErrorAction
+} from "./creators"
+import { getProductsService } from "../../services/products.service"
 // import Swal from "sweetalert2";
 
 // get items
 export const getItems = () => {
     return async (dispatch) => {
-        try {
-            const response = await axios.get("http://localhost:5000/products");
-            const data = response.data;
-            dispatch({
-                type: types.get,
-                data: data
-            });
-        } catch (error) {
-            return dispatch(
-                {
-                    type: types.error,
-                    msg: "Unable to get items"
-                });
-        }
+        getProductsService().then(
+            ({ data }) => {
+                dispatch(getProductsAction(data));
+            },
+            (error) => {
+                return dispatch(ErrorAction(error));
+            }
+        )
     };
 };
 

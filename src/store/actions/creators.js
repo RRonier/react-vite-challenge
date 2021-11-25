@@ -8,7 +8,7 @@ export const getProductsAction = (data) => {
         })
 }
 
-export const ErrorAction = (error) => {
+export const errorAction = (error) => {
     return (
         {
             type: types.error,

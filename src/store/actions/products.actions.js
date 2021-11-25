@@ -6,11 +6,11 @@ import {
     deleteProductAction,
     errorAction
 } from "./creators"
-import { getProductsService, selectProductService } from "../../services/products.service"
+import { getProductsService, selectProductService, deleteProductService } from "../../services/products.service"
 // import Swal from "sweetalert2";
 
 // get products
-export const getItems = () => {
+export const getProductsData = () => {
     return async (dispatch) => {
         getProductsService().then(
             ({ data }) => {
@@ -23,8 +23,7 @@ export const getItems = () => {
     };
 };
 
-
-//select product
+//select one single product
 export const selectItem = (id) => {
     return async (dispatch) => {
         selectProductService(id).then(
@@ -38,41 +37,14 @@ export const selectItem = (id) => {
     };
 }
 
-const sweetAlertConfirmDeleteItem = (id, dispatch) => {
-    // Swal.fire({
-    //     title: 'Are you sure?',
-    //     text: "You won't be able to revert this!",
-    //     icon: 'warning',
-    //     showCancelButton: true,
-    //     confirmButtonColor: '#3085d6',
-    //     cancelButtonColor: '#d33',
-    //     confirmButtonText: 'Yes, delete it!'
-    // })
-    //     .then((result) => {
-    //         if (result.isConfirmed) {
-    axios.delete(`http://localhost:5000/products/${id}`);
-    dispatch({
-        type: types.delete,
-        deletedItem: { id }
-    })
-    // Swal.fire(
-    //     'Deleted!',
-    //     'Your file has been deleted.',
-    //     'success'
-    // )
-    // }
-    // })
-}
-
-export const getItemDeleteGetItems = (id) => {
-
+//delete product
+export const deleteProduct = (id) => {
     return async (dispatch) => {
-
         try {
             dispatch(selectItem(id))
-            sweetAlertConfirmDeleteItem(id, dispatch)
-
-
+            deleteProductService(id).then((response) => {
+                dispatch(getProductsData())
+            })
         } catch (error) {
             return dispatch(
                 {
@@ -83,9 +55,8 @@ export const getItemDeleteGetItems = (id) => {
     };
 };
 
-
-//modify item
-export const modifyItem = async (
+//edit item
+export const editProduct = async (
     id,
     name,
     cost,

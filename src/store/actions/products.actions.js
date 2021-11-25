@@ -4,12 +4,12 @@ import {
     getProductsAction,
     selectProductAction,
     deleteProductAction,
-    ErrorAction
+    errorAction
 } from "./creators"
-import { getProductsService } from "../../services/products.service"
+import { getProductsService, selectProductService } from "../../services/products.service"
 // import Swal from "sweetalert2";
 
-// get items
+// get products
 export const getItems = () => {
     return async (dispatch) => {
         getProductsService().then(
@@ -24,23 +24,17 @@ export const getItems = () => {
 };
 
 
-//delete item
+//select product
 export const selectItem = (id) => {
     return async (dispatch) => {
-        try {
-            const response = await axios.get(`http://localhost:5000/products/${id}`);
-            const data = response.data;
-            dispatch({
-                type: types.selected,
-                selectedItem: data
-            });
-        } catch (error) {
-            return dispatch(
-                {
-                    type: types.error,
-                    msg: "Unable to select item"
-                });
-        }
+        selectProductService(id).then(
+            ({ data }) => {
+                dispatch(selectProductAction(data))
+            },
+            (error) => {
+                dispatch(errorAction(error))
+            }
+        )
     };
 }
 

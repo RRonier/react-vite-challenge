@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react'
 import NavBar from '../components/shared/NavBar/NavBar'
-import { editProduct, selectItem } from "../store/actions/products.actions"
+import { editProduct } from "../store/actions/products.actions"
 import { useForm } from '../hooks/useForm'
 import { useNavigate } from 'react-router-dom'
 import CustomButton from '../components/shared/CustomButton/CustomButton'
 import { TextField } from "@mui/material"
-import ProductForm from "../components/forms/productsForm"
 
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -34,7 +33,6 @@ const EditProductView = () => {
     })
 
     useEffect(() => {
-        // dispatch(selectItem(formId))
         reset()
     }, [
         id,

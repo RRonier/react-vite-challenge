@@ -13,7 +13,7 @@ import AddIcon from '@mui/icons-material/Add'
 import EditIcon from '@mui/icons-material/Edit'
 import DeleteIcon from '@mui/icons-material/Delete'
 import Spinner from "../components/shared/Spinner/Spinner"
-import { getItems, getItemDeleteGetItems, selectItem } from "../store/actions/products.actions"
+import { getProductsData, deleteProduct, selectItem } from "../store/actions/products.actions"
 import { useNavigate } from 'react-router-dom'
 
 const ProductsTable = () => {
@@ -22,7 +22,7 @@ const ProductsTable = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        dispatch(getItems())
+        dispatch(getProductsData())
     }, [])
 
     const onCreateProduct = () => {
@@ -33,7 +33,7 @@ const ProductsTable = () => {
         navigate(`/editProduct/:${id}`)
     }
     const deleteProduct = (id) => {
-        dispatch(getItemDeleteGetItems(id))
+        dispatch(deleteProduct(id))
     }
 
     return (

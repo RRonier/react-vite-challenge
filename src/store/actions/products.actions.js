@@ -46,11 +46,7 @@ export const deleteProduct = (id) => {
                 dispatch(getProductsData())
             })
         } catch (error) {
-            return dispatch(
-                {
-                    type: types.error,
-                    msg: "Unable to delete item"
-                });
+            return dispatch(errorAction(error));
         }
     };
 };

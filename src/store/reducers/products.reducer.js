@@ -3,7 +3,7 @@ import { types } from "../actions/actionTypes";
 const initialState = {
     data: null,
     selected: null,
-    deleted: '',
+    deleted: null,
     created: null,
     modified: null,
     error: ''

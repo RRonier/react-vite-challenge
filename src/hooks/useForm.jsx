@@ -3,6 +3,10 @@ import { useState } from "react"
 export const useForm = (initialState = {}) => {
     const [formValues, setFormValues] = useState(initialState)
 
+    const resetForm = () => {
+        setFormValues(initialState)
+    }
+
     const onChange = (event) => {
         const { name, value } = event.target
         setFormValues((state) => ({
@@ -10,5 +14,5 @@ export const useForm = (initialState = {}) => {
             [name]: value
         }))
     }
-    return [formValues, onChange]
+    return [formValues, onChange, resetForm]
 }

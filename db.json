@@ -1,36 +1,36 @@
 {
   "products": [
     {
-      "id": 21,
-      "name": "sdfsdf",
-      "cost": 444,
+      "id": 5656651,
+      "name": "sfsdfsdf",
+      "cost": 65151,
       "department": [
         {
-          "name": "44",
-          "identification": "44"
+          "name": "sdsfsd",
+          "identification": "51651"
         }
       ],
       "category": [
         {
-          "name": "55555555",
-          "id": 44
+          "name": "fsdfsdf",
+          "id": 65151651
         }
       ]
     },
     {
-      "id": 5151,
-      "name": "asdasd",
-      "cost": 51651,
+      "id": 6060,
+      "name": "6060",
+      "cost": 606060,
       "department": [
         {
-          "name": "asdas",
-          "identification": "651561"
+          "name": "6060",
+          "identification": "6060"
         }
       ],
       "category": [
         {
-          "name": "asdas",
-          "id": 65156156
+          "name": "6060",
+          "id": 60606
         }
       ]
     }

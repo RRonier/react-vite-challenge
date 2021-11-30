@@ -32,7 +32,7 @@ const ProductsTable = () => {
         dispatch(selectItem(id))
         navigate(`/editProduct/:${id}`)
     }
-    const deleteProduct = (id) => {
+    const onDeleteProduct = (id) => {
         dispatch(deleteProduct(id))
     }
 
@@ -77,7 +77,7 @@ const ProductsTable = () => {
                                             <TableCell align="center">{`$${cost}`}</TableCell>
                                             <TableCell align="center">
                                                 <EditIcon sx={{ margin: '0 10px', cursor: 'pointer' }} onClick={() => onEditProduct(id)} />
-                                                <DeleteIcon sx={{ margin: '0 10px', cursor: 'pointer' }} onClick={() => deleteProduct(id)} />
+                                                <DeleteIcon sx={{ margin: '0 10px', cursor: 'pointer' }} onClick={() => onDeleteProduct(id)} />
                                             </TableCell>
                                         </TableRow>
                                     ))

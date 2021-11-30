@@ -5,6 +5,7 @@ import { useForm } from '../hooks/useForm'
 import { useNavigate } from 'react-router-dom'
 import CustomButton from '../components/shared/CustomButton/CustomButton'
 import { TextField } from "@mui/material"
+import { formImputs, input } from "./CreateProduct.module.css"
 
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -79,7 +80,7 @@ const EditProductView = () => {
                         alignItems: 'center'
                     }}
                 >
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', rowGap: '15px', columnGap: '15px', width: '35%' }}>
+                    <div className={formImputs}>
                         <TextField
                             required
                             name="formId"
@@ -123,11 +124,12 @@ const EditProductView = () => {
                             onChange={onChange}
                             value={formCategory}
                         />
-                        <div style={{ display: 'grid' }}>
+                        <div className={input}>
                             <TextField
                                 name="formCategoryId"
                                 label="Category ID"
                                 type="number"
+                                fullWidth
                                 onChange={onChange}
                                 value={formCategoryId}
                             />

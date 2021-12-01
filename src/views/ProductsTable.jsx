@@ -17,7 +17,7 @@ import { getProductsData, deleteProduct, selectProduct } from "../store/actions/
 import { useNavigate } from 'react-router-dom'
 
 const ProductsTable = () => {
-    const { data } = useSelector((state) => state.axiosDataReducer)
+    const { data } = useSelector((state) => state.productsReducer)
     const dispatch = useDispatch()
     const navigate = useNavigate()
 

@@ -11,7 +11,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 const EditProductView = () => {
 
-    const { selected } = useSelector(state => state.axiosDataReducer)
+    const { selected } = useSelector(state => state.productsReducer)
     const history = useNavigate()
     const dispatch = useDispatch()
 

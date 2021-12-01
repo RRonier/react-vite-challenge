@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
-import { axiosDataReducer } from './products.reducer'
+import { productsReducer } from './products.reducer'
 
 
 export const rootReducer = combineReducers({
-    axiosDataReducer
+    productsReducer
 })

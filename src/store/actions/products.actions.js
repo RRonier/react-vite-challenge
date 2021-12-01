@@ -1,9 +1,6 @@
-import { types } from '../actions/actionTypes'
-import { API } from "../../utils/API"
 import {
     getProductsAction,
     selectProductAction,
-    deleteProductAction,
     createProductAction,
     editProductAction,
     errorAction

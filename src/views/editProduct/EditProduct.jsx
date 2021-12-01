@@ -88,42 +88,42 @@ const EditProductView = () => {
                             type="number"
                             disabled={id !== null || id !== ''}
                             onChange={onChange}
-                            value={formId}
+                            value={formId || ""}
                         />
                         <TextField
                             name="formName"
                             label="Name"
                             type="text"
                             onChange={onChange}
-                            value={formName}
+                            value={formName || ""}
                         />
                         <TextField
                             name="formCost"
                             label="Cost"
                             type="number"
                             onChange={onChange}
-                            value={formCost}
+                            value={formCost || ""}
                         />
                         <TextField
                             name="formDepartment"
                             label="Department"
                             type="text"
                             onChange={onChange}
-                            value={formDepartment}
+                            value={formDepartment || ""}
                         />
                         <TextField
                             name="formDepartmentId"
                             label="Department ID"
                             type="number"
                             onChange={onChange}
-                            value={formDepartmentId}
+                            value={formDepartmentId || ""}
                         />
                         <TextField
                             name="formCategory"
                             label="Category"
                             type="text"
                             onChange={onChange}
-                            value={formCategory}
+                            value={formCategory || ""}
                         />
                         <div className={input}>
                             <TextField
@@ -132,7 +132,7 @@ const EditProductView = () => {
                                 type="number"
                                 fullWidth
                                 onChange={onChange}
-                                value={formCategoryId}
+                                value={formCategoryId || ""}
                             />
                         </div>
                     </div>

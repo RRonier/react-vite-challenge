@@ -44,7 +44,7 @@ const CreateProductView = () => {
             categoryId,
             dispatch,
             history
-        ).then(() => history("/"))
+        )
     }
     return (
         <div style={{ marginTop: '90px' }}>

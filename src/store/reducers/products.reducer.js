@@ -9,7 +9,7 @@ const initialState = {
     error: ''
 }
 
-export const axiosDataReducer = (state = initialState, action) => {
+export const productsReducer = (state = initialState, action) => {
     switch (action.type) {
         case types.get:
             return {

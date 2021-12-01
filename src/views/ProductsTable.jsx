@@ -33,7 +33,9 @@ const ProductsTable = () => {
         navigate(`/editProduct/:${id}`)
     }
     const onDeleteProduct = (id) => {
-        dispatch(deleteProduct(id))
+        if (window.confirm("Do you want to delet this product?")) {
+            dispatch(deleteProduct(id))
+        }
     }
 
     return (

@@ -1,11 +1,11 @@
 import React from 'react'
-import NavBar from '../components/shared/NavBar/NavBar'
+import NavBar from '../../components/shared/NavBar/NavBar'
 import { useDispatch } from 'react-redux'
-import { createNewItem } from "../store/actions/products.actions"
-import { useForm } from '../hooks/useForm'
+import { addProduct } from "../../store/actions/products.actions"
+import { useForm } from '../../hooks/useForm'
 import { useNavigate } from 'react-router-dom'
 import { TextField } from "@mui/material"
-import CustomButton from '../components/shared/CustomButton/CustomButton'
+import CustomButton from '../../components/shared/CustomButton/CustomButton'
 import { formImputs, input } from "./CreateProduct.module.css"
 
 const CreateProductView = () => {
@@ -34,7 +34,7 @@ const CreateProductView = () => {
 
     const submit = (e) => {
         e.preventDefault()
-        createNewItem(
+        addProduct(
             id,
             name,
             cost,

@@ -32,3 +32,11 @@ export const deleteProductAction = (id) => {
         }
     )
 }
+export const createProductAction = (data) => {
+    return (
+        {
+            type: types.created,
+            createdItem: data
+        }
+    )
+}

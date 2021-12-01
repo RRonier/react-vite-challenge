@@ -5,5 +5,4 @@ export const types = {
     delete: 'DELETED-DATA',
     created: 'CREATED-DATA',
     modify: 'MODIFIED-DATA',
-
 }

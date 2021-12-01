@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
-import NavBar from '../components/shared/NavBar/NavBar'
-import { editProduct } from "../store/actions/products.actions"
-import { useForm } from '../hooks/useForm'
+import NavBar from '../../components/shared/NavBar/NavBar'
+import { editProduct } from "../../store/actions/products.actions"
+import { useForm } from '../../hooks/useForm'
 import { useNavigate } from 'react-router-dom'
-import CustomButton from '../components/shared/CustomButton/CustomButton'
+import CustomButton from '../../components/shared/CustomButton/CustomButton'
 import { TextField } from "@mui/material"
-import { formImputs, input } from "./CreateProduct.module.css"
+import { formImputs, input } from "./editProduct.module.css"
 
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -86,6 +86,7 @@ const EditProductView = () => {
                             name="formId"
                             label="Id"
                             type="number"
+                            disabled={id !== null || id !== ''}
                             onChange={onChange}
                             value={formId}
                         />

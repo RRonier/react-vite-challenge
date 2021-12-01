@@ -13,7 +13,7 @@ import AddIcon from '@mui/icons-material/Add'
 import EditIcon from '@mui/icons-material/Edit'
 import DeleteIcon from '@mui/icons-material/Delete'
 import Spinner from "../components/shared/Spinner/Spinner"
-import { getProductsData, deleteProduct, selectItem } from "../store/actions/products.actions"
+import { getProductsData, deleteProduct, selectProduct } from "../store/actions/products.actions"
 import { useNavigate } from 'react-router-dom'
 
 const ProductsTable = () => {
@@ -25,22 +25,22 @@ const ProductsTable = () => {
         dispatch(getProductsData())
     }, [])
 
-    const onCreateProduct = () => {
-        navigate("/createProduct")
-    }
-    const onEditProduct = (id) => {
-        dispatch(selectItem(id))
-        navigate(`/editProduct/:${id}`)
-    }
-    const onDeleteProduct = (id) => {
-        dispatch(deleteProduct(id))
-    }
+    // const onCreateProduct = () => {
+    //     navigate("/createProduct")
+    // }
+    // const onEditProduct = (id) => {
+    //     dispatch(selectProduct(id))
+    //     navigate(`/editProduct/:${id}`)
+    // }
+    // const onDeleteProduct = (id) => {
+    //     dispatch(deleteProduct(id))
+    // }
 
     return (
         <>
             {
                 !data ? (
-                    <Spinner />
+                    <p>Loading...</p>
                 ) : (
                     <TableContainer style={{ marginTop: '70px' }}>
                         <Table aria-label="simple table" id="table">
@@ -76,8 +76,12 @@ const ProductsTable = () => {
                                             <TableCell align="center">{category[0].name}</TableCell>
                                             <TableCell align="center">{`$${cost}`}</TableCell>
                                             <TableCell align="center">
-                                                <EditIcon sx={{ margin: '0 10px', cursor: 'pointer' }} onClick={() => onEditProduct(id)} />
-                                                <DeleteIcon sx={{ margin: '0 10px', cursor: 'pointer' }} onClick={() => onDeleteProduct(id)} />
+                                                <EditIcon sx={{ margin: '0 10px', cursor: 'pointer' }}
+                                                // onClick={() => onEditProduct(id)} 
+                                                />
+                                                <DeleteIcon sx={{ margin: '0 10px', cursor: 'pointer' }}
+                                                // onClick={() => onDeleteProduct(id)} 
+                                                />
                                             </TableCell>
                                         </TableRow>
                                     ))
@@ -93,7 +97,7 @@ const ProductsTable = () => {
                     bottom: '15px',
                     right: '20px'
                 }}
-                onClick={onCreateProduct}
+            // onClick={onCreateProduct}
             >
                 <AddIcon />
             </Fab>

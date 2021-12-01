@@ -25,16 +25,16 @@ const ProductsTable = () => {
         dispatch(getProductsData())
     }, [])
 
-    // const onCreateProduct = () => {
-    //     navigate("/createProduct")
-    // }
-    // const onEditProduct = (id) => {
-    //     dispatch(selectProduct(id))
-    //     navigate(`/editProduct/:${id}`)
-    // }
-    // const onDeleteProduct = (id) => {
-    //     dispatch(deleteProduct(id))
-    // }
+    const onCreateProduct = () => {
+        navigate("/createProduct")
+    }
+    const onEditProduct = (id) => {
+        dispatch(selectProduct(id))
+        navigate(`/editProduct/:${id}`)
+    }
+    const onDeleteProduct = (id) => {
+        dispatch(deleteProduct(id))
+    }
 
     return (
         <>
@@ -77,10 +77,10 @@ const ProductsTable = () => {
                                             <TableCell align="center">{`$${cost}`}</TableCell>
                                             <TableCell align="center">
                                                 <EditIcon sx={{ margin: '0 10px', cursor: 'pointer' }}
-                                                // onClick={() => onEditProduct(id)} 
+                                                    onClick={() => onEditProduct(id)}
                                                 />
                                                 <DeleteIcon sx={{ margin: '0 10px', cursor: 'pointer' }}
-                                                // onClick={() => onDeleteProduct(id)} 
+                                                    onClick={() => onDeleteProduct(id)}
                                                 />
                                             </TableCell>
                                         </TableRow>
@@ -97,7 +97,7 @@ const ProductsTable = () => {
                     bottom: '15px',
                     right: '20px'
                 }}
-            // onClick={onCreateProduct}
+                onClick={onCreateProduct}
             >
                 <AddIcon />
             </Fab>

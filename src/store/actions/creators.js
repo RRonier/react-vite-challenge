@@ -40,3 +40,11 @@ export const createProductAction = (data) => {
         }
     )
 }
+export const editProductAction = (selected) => {
+    return (
+        {
+            type: types.modify,
+            modifiedItem: selected
+        }
+    )
+}

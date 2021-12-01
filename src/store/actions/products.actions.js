@@ -5,9 +5,16 @@ import {
     selectProductAction,
     deleteProductAction,
     createProductAction,
+    editProductAction,
     errorAction
 } from "./creators"
-import { getProductsService, selectProductService, deleteProductService, addProductService } from "../../services/products.service"
+import {
+    getProductsService,
+    selectProductService,
+    deleteProductService,
+    addProductService,
+    editProductService
+} from "../../services/products.service"
 
 // get products
 export const getProductsData = () => {
@@ -63,41 +70,34 @@ export const editProduct = async (
     dispatch,
     history
 ) => {
-    try {
-        await API.put(`http://localhost:5000/products/${id}`, {
-            "id": +id,
-            "name": name,
-            "cost": +cost,
-            "department": [
-                {
-                    "name": department,
-                    "identification": departmentId
-                }
-            ],
-            "category": [
-                {
-                    "name": category,
-                    "id": +categoryId
-                }
-            ]
-        })
-        const modified = await API.get(`http://localhost:5000/products/${id}`)
-        const { selected } = modified
-
-        await dispatch({
-            type: types.modify,
-            modifiedItem: selected
-        });
-        await history('/')
-    } catch (error) {
-        console.log(`error ${error}`)
-        return dispatch({
-            type: types.error,
-            msg: 'Unable to modify item'
-        })
-    }
-
-};
+    editProductService(id, {
+        "id": id,
+        "name": name,
+        "cost": cost,
+        "department": [
+            {
+                "name": department,
+                "identification": departmentId
+            }
+        ],
+        "category": [
+            {
+                "name": category,
+                "id": categoryId
+            }
+        ]
+    }).then(() => {
+        selectProductService(id)
+            .then(({ selected }) => {
+                dispatch(editProductAction(selected))
+                history('/')
+            },
+                (error) => dispatch(errorAction(error))
+            )
+    },
+        (error) => dispatch(errorAction(error))
+    )
+}
 
 
 //create item
